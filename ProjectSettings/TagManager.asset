@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Earth
+  - Soil
+  - Lava
+  - Shield
+  - HealthBall
+  - RocketTag
+  - NuclearTag
   layers:
   - Default
   - TransparentFX
