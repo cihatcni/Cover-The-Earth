@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public Text GameOverText;
     bool isGameOver = false;
     float timer = 0;
+    
 
     void Start()
     {

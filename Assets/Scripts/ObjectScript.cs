@@ -8,7 +8,7 @@ public class ObjectScript : MonoBehaviour  {
 
     void Start()
     {
-        
+
         int distance = GameObject.Find("GameManager").GetComponent<RandomObjectManager>().distance;
         Rigidbody rigidbody = GetComponent<Rigidbody>();
 
@@ -31,4 +31,6 @@ public class ObjectScript : MonoBehaviour  {
         }
 
     }
+
+
 }

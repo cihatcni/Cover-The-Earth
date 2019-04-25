@@ -9,6 +9,7 @@ public class CubeScript : MonoBehaviour {
     Renderer rend;
     BoxCollider collider;
     GameController controller;
+    public GameObject earth;
 
     void Start() {
         rend = GetComponent<Renderer>();
@@ -22,7 +23,7 @@ public class CubeScript : MonoBehaviour {
             if(collision.gameObject.tag == "HealthBall") {
                 this.tag = "Shield";
                 rend.material = shieldMat;
-                controller.addScore(5);
+                controller.addScore(5);                
             }
             else if(collision.gameObject.tag == "RocketTag") {
                 this.tag = "DamagedCube";
@@ -33,6 +34,8 @@ public class CubeScript : MonoBehaviour {
                 controller.GameOver();
                 Debug.Log("Nuclear Çarptı.");
             }
+            this.gameObject.GetComponentInParent<AudioSource>().clip = collision.gameObject.GetComponent<AudioSource>().clip;
+            this.gameObject.GetComponentInParent<AudioSource>().Play();
             Destroy(collision.gameObject);
         }
         else if(this.tag == "Shield") {
@@ -46,6 +49,8 @@ public class CubeScript : MonoBehaviour {
                 this.tag = "SoilTag";
                 rend.material = soilMat;
             }
+            this.gameObject.GetComponentInParent<AudioSource>().clip = collision.gameObject.GetComponent<AudioSource>().clip;
+            this.gameObject.GetComponentInParent<AudioSource>().Play();
             Destroy(collision.gameObject);
         }
         else if (this.tag == "DamagedCube") {
@@ -54,6 +59,8 @@ public class CubeScript : MonoBehaviour {
                 rend.material = soilMat;
                 collider.isTrigger = false;
                 rend.enabled = true;
+                this.gameObject.GetComponentInParent<AudioSource>().clip = collision.gameObject.GetComponent<AudioSource>().clip;
+                this.gameObject.GetComponentInParent<AudioSource>().Play();
                 Destroy(collision.gameObject);
             }
         }
@@ -67,12 +74,15 @@ public class CubeScript : MonoBehaviour {
                 rend.material = soilMat;
                 collider.isTrigger = false;
                 rend.enabled = true;
+                this.gameObject.GetComponentInParent<AudioSource>().clip = other.gameObject.GetComponent<AudioSource>().clip;
+                this.gameObject.GetComponentInParent<AudioSource>().Play();
                 Destroy(other.gameObject);
             }
         }
 
 
     }
+
 
 
 
