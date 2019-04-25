@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1941749661918955030}
   - component: {fileID: 1941749661918955033}
   - component: {fileID: 1941749661918955032}
+  - component: {fileID: 5055391158158194213}
   m_Layer: 0
   m_Name: SoilCube
-  m_TagString: Soil
+  m_TagString: SoilTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,3 +92,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5055391158158194213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941749661918955035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56393a3aab419e54d9d15fb066063675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldMat: {fileID: 2100000, guid: 2808d3d0946950a4e813ed61361635b2, type: 2}
+  soilMat: {fileID: 2100000, guid: 8e864d0ea485aef4385f0b776feacdca, type: 2}

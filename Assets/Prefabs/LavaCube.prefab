@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3765289126593750197}
   - component: {fileID: 3765289126593750198}
   - component: {fileID: 3765289126593750199}
+  - component: {fileID: 2567741667003686884}
   m_Layer: 0
   m_Name: LavaCube
   m_TagString: Lava
@@ -91,3 +92,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2567741667003686884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3765289126593750192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051f0c740c1ef174081e91834594a6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

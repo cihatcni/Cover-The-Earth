@@ -5,12 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Earth
-  - Soil
   - Lava
   - Shield
   - HealthBall
   - RocketTag
   - NuclearTag
+  - SoilTag
+  - DamagedCube
   layers:
   - Default
   - TransparentFX
