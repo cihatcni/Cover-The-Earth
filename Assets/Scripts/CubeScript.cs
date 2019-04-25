@@ -8,10 +8,12 @@ public class CubeScript : MonoBehaviour {
     public Material soilMat;
     Renderer rend;
     BoxCollider collider;
+    GameController controller;
 
     void Start() {
         rend = GetComponent<Renderer>();
         collider = GetComponent<BoxCollider>();
+        controller = GameObject.Find("GameManager").GetComponent<GameController>();
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -20,6 +22,7 @@ public class CubeScript : MonoBehaviour {
             if(collision.gameObject.tag == "HealthBall") {
                 this.tag = "Shield";
                 rend.material = shieldMat;
+                controller.addScore(5);
             }
             else if(collision.gameObject.tag == "RocketTag") {
                 this.tag = "DamagedCube";
@@ -27,18 +30,17 @@ public class CubeScript : MonoBehaviour {
                 rend.enabled = false;
             }
             else if(collision.gameObject.tag == "NuclearTag") {
-                //Oyunu bitir.
+                controller.GameOver();
                 Debug.Log("Nuclear Çarptı.");
             }
             Destroy(collision.gameObject);
         }
         else if(this.tag == "Shield") {
             if (collision.gameObject.tag == "HealthBall") {
-                //Puan ekle.
-
+                controller.addScore(23);
             }
             else if (collision.gameObject.tag == "RocketTag") {
-                //Hasar almaz. Puan ekle.
+                controller.addScore(7);         
             }
             else if (collision.gameObject.tag == "NuclearTag") {
                 this.tag = "SoilTag";
@@ -54,13 +56,6 @@ public class CubeScript : MonoBehaviour {
                 rend.enabled = true;
                 Destroy(collision.gameObject);
             }
-            else if (collision.gameObject.tag == "RocketTag") {
-                //Arkadaki lavaCube'a geçeçek. İşlem yapma.
-
-            }
-            else if (collision.gameObject.tag == "NuclearTag") {
-                //Arkadaki lavaCube'a geçeçek. İşlem yapma.
-            }
         }
 
     }
@@ -73,13 +68,6 @@ public class CubeScript : MonoBehaviour {
                 collider.isTrigger = false;
                 rend.enabled = true;
                 Destroy(other.gameObject);
-            }
-            else if (other.gameObject.tag == "RocketTag") {
-                //Arkadaki lavaCube'a geçeçek. İşlem yapma.
-
-            }
-            else if (other.gameObject.tag == "NuclearTag") {
-                //Arkadaki lavaCube'a geçeçek. İşlem yapma.
             }
         }
 

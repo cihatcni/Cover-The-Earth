@@ -8,17 +8,12 @@ public class RandomObjectManager : MonoBehaviour
     public GameObject healthBall;
     public GameObject rocket;
     public GameObject nuclearBomb;
-    public GameObject earth;
 
     public int distance = 230;
     public float randomRangeHealth = 0.04f;
     public float randomRangeRocket = 0.05f;
     public float randomRangeNuclear = 0.01f;
 
-    void Start() {
-
- 
-    }
 
     void Update() {
 
@@ -30,7 +25,6 @@ public class RandomObjectManager : MonoBehaviour
 
         if (Random.value < randomRangeRocket)
             createObject(rocket);
-
 
     }
 

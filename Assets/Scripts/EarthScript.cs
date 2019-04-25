@@ -6,9 +6,11 @@ public class EarthScript : MonoBehaviour {
 
     public GameObject soilCube;
     public GameObject kernelCube;
+    public GameObject star;
     public int yaricap;
     public float rotSpeed = 20;
     bool drag = false;
+    public int starCount = 5000;
 
 
     void Start() {
@@ -28,6 +30,14 @@ public class EarthScript : MonoBehaviour {
                         tmp.transform.SetParent(gameObject.transform);
                     }
                 }
+
+        int i, j;
+        for (i=0; i<starCount; i++) {
+            Vector3 aci = new Vector3(Random.value-0.5f, Random.value-0.5f, Random.value-0.5f);
+            aci *= Random.Range(80, 200) / aci.magnitude;
+            GameObject tmp = Instantiate(star, aci, new Quaternion(0, 0, 0, 0));
+        }
+
     }
 
     void Update() {
@@ -57,7 +67,7 @@ public class EarthScript : MonoBehaviour {
             float rotY = Input.GetAxis("Mouse Y") * rotSpeed * Mathf.Deg2Rad;
 
             transform.RotateAround(Vector3.zero, Vector3.up, -rotX);
-            transform.RotateAround(Vector3.zero, Vector3.right, rotY);
+            transform.RotateAround(Vector3.zero, Vector3.right, rotY);        
         }
 
 
