@@ -25,4 +25,8 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("tutorial");
     }
 
+    public void aboutMenu() {
+        SceneManager.LoadScene("About");
+    }
+
 }

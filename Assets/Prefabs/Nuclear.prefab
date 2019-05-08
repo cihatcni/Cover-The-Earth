@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4580819498811193883}
   - component: {fileID: 4216654351845069454}
   - component: {fileID: 7521030257029666335}
-  - component: {fileID: 6207433311761161036}
   - component: {fileID: -4895134560663174616}
   m_Layer: 0
   m_Name: Nuclear
@@ -68,23 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2733c759c281e624c9148a7be0bede2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nuclearClip: {fileID: 8300000, guid: a017aa0d243f87a4a92e1eca0e4dbff6, type: 3}
-  healthClip: {fileID: 8300000, guid: 85ad4160a5ea0b54ea65b4c15a89ecec, type: 3}
-  rocketClip: {fileID: 0}
---- !u!136 &6207433311761161036
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 464240898632684445}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.39
-  m_Height: 1.83
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &-4895134560663174616
 AudioSource:
   m_ObjectHideFlags: 0
@@ -721,7 +703,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

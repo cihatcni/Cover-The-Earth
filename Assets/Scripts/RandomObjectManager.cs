@@ -10,19 +10,27 @@ public class RandomObjectManager : MonoBehaviour
     public GameObject nuclearBomb;
 
     public int distance = 230;
-    public float randomRangeHealth = 0.04f;
-    public float randomRangeRocket = 0.05f;
-    public float randomRangeNuclear = 0.01f;
+    public float randomRangeHealth;
+    public float randomRangeRocket;
+    public float randomRangeNuclear;
+    int lastScore;
     GameController gc;
 
     void Start() {
         gc = GameObject.Find("GameManager").GetComponent<GameController>();
+        lastScore = 0;
     }
 
 
     void Update() {
 
         int score = gc.getScore();
+        if((score-lastScore) > 100) {
+            lastScore = score;
+            randomRangeHealth += 0.001f;
+            randomRangeNuclear += 0.0005f;
+            randomRangeRocket += 0.001f;
+        }
 
         if (Random.value < randomRangeHealth)
             createObject(healthBall);

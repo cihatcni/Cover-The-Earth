@@ -31,11 +31,13 @@ public class EarthScript : MonoBehaviour {
                     }
                 }
 
+        GameObject stars = GameObject.Find("Stars");
         int i, j;
         for (i=0; i<starCount; i++) {
             Vector3 aci = new Vector3(Random.value-0.5f, Random.value-0.5f, Random.value-0.5f);
             aci *= Random.Range(80, 200) / aci.magnitude;
             GameObject tmp = Instantiate(star, aci, new Quaternion(0, 0, 0, 0));
+            tmp.transform.SetParent(stars.transform);
         }
 
     }
