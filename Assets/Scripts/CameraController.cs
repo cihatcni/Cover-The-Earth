@@ -6,6 +6,10 @@ public class CameraController : MonoBehaviour
 {
     bool drag = false;
     public float rotSpeed = 20f;
+    
+	private const float zoomSpeed = 350f;
+	private const int minDistanceToEarth = 20;
+	private const int maxDistanceToEarth = 120;
 
     void Start()
     {
@@ -30,7 +34,18 @@ public class CameraController : MonoBehaviour
             transform.RotateAround(Vector3.zero, Vector3.right, rotY);
 
             transform.LookAt(Vector3.zero);
+			
         }
+		
+		float scrollAxis = Input.GetAxis("Mouse ScrollWheel");
+		if(scrollAxis != 0f) {
+			Vector3 direction = (-transform.position*scrollAxis).normalized;
+			Vector3 newPosition = transform.position + direction * zoomSpeed * Time.deltaTime;
+			float distanceToEarth = newPosition.magnitude;
+			Debug.Log(""+distanceToEarth);
+			if(distanceToEarth < maxDistanceToEarth && distanceToEarth > minDistanceToEarth)
+				transform.position = newPosition;
+		}
 
     }
 }
