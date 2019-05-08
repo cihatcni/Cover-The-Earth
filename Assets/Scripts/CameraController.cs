@@ -11,13 +11,15 @@ public class CameraController : MonoBehaviour
     public float timeRange;
     private float zoomSpeed2 = 1f;
 
-    private const float zoomSpeed = 350f;
-	private const int minDistanceToEarth = 20;
-	private const int maxDistanceToEarth = 120;
+	private const int minDistanceToEarth = 18;
+	private const int maxDistanceToEarth = 125;
+	
+	private float newDistance;
+	
 
     void Start()
     {
-        newPosition = transform.position;
+		newDistance = transform.position.magnitude;
     }
 
     void Update()
@@ -38,27 +40,19 @@ public class CameraController : MonoBehaviour
             transform.RotateAround(Vector3.zero, Vector3.right, rotY);
 
             transform.LookAt(Vector3.zero);
-			
+			newPosition = transform.position;
         }
 		
 		float scrollAxis = Input.GetAxis("Mouse ScrollWheel");
         if (scrollAxis != 0f) { 
-            Debug.Log(scrollAxis);
-            zoomSpeed2 =  1.2f * (1 + Mathf.Abs(scrollAxis));
-            Vector3 direction = (-transform.position*scrollAxis).normalized * zoomSpeed2;
-			Vector3 tempPosition = transform.position + direction * zoomSpeed * Time.deltaTime;
-			float distanceToEarth = tempPosition.magnitude;
-			if(distanceToEarth < maxDistanceToEarth && distanceToEarth > minDistanceToEarth)
-				newPosition = tempPosition;
-		}
-
-        if(transform.position != newPosition) {
-            Vector3 direction = (newPosition - transform.position).normalized * zoomSpeed2;
-            transform.position += direction;
-            if (Vector3.Distance(transform.position, newPosition) < 1f)
-                transform.position = newPosition;
-        }
-        
-
+			Debug.Log(scrollAxis);
+			float sign = -Mathf.Sign(scrollAxis);
+			newDistance += sign*(sign+scrollAxis)*(sign+scrollAxis)*11;
+			newDistance = Mathf.Clamp(newDistance, minDistanceToEarth, maxDistanceToEarth);
+		}    
+		
+		float currentDistance = transform.position.magnitude;
+		currentDistance = currentDistance+(newDistance-currentDistance)/5;
+		transform.position = currentDistance*transform.position.normalized;   
     }
 }
