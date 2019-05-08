@@ -11,12 +11,6 @@ public class GameController : MonoBehaviour
     public Text GameOverText;
     bool isGameOver = false;
     float timer = 0;
-    
-
-    void Start()
-    {
-        
-    }
 
     void Update() {
 
@@ -49,6 +43,14 @@ public class GameController : MonoBehaviour
         foreach (GameObject item in items) {
             Destroy(item); 
         }
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void backToMenu() {
+        SceneManager.LoadScene(0);
     }
 
 
