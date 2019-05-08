@@ -6,14 +6,18 @@ public class CameraController : MonoBehaviour
 {
     bool drag = false;
     public float rotSpeed = 20f;
-    
-	private const float zoomSpeed = 350f;
+    Vector3 newPosition;
+    public float time = 0;
+    public float timeRange;
+    private float zoomSpeed2 = 1f;
+
+    private const float zoomSpeed = 350f;
 	private const int minDistanceToEarth = 20;
 	private const int maxDistanceToEarth = 120;
 
     void Start()
     {
-        
+        newPosition = transform.position;
     }
 
     void Update()
@@ -38,14 +42,23 @@ public class CameraController : MonoBehaviour
         }
 		
 		float scrollAxis = Input.GetAxis("Mouse ScrollWheel");
-		if(scrollAxis != 0f) {
-			Vector3 direction = (-transform.position*scrollAxis).normalized;
-			Vector3 newPosition = transform.position + direction * zoomSpeed * Time.deltaTime;
-			float distanceToEarth = newPosition.magnitude;
-			Debug.Log(""+distanceToEarth);
+        if (scrollAxis != 0f) { 
+            Debug.Log(scrollAxis);
+            zoomSpeed2 =  1.2f * (1 + Mathf.Abs(scrollAxis));
+            Vector3 direction = (-transform.position*scrollAxis).normalized * zoomSpeed2;
+			Vector3 tempPosition = transform.position + direction * zoomSpeed * Time.deltaTime;
+			float distanceToEarth = tempPosition.magnitude;
 			if(distanceToEarth < maxDistanceToEarth && distanceToEarth > minDistanceToEarth)
-				transform.position = newPosition;
+				newPosition = tempPosition;
 		}
+
+        if(transform.position != newPosition) {
+            Vector3 direction = (newPosition - transform.position).normalized * zoomSpeed2;
+            transform.position += direction;
+            if (Vector3.Distance(transform.position, newPosition) < 1f)
+                transform.position = newPosition;
+        }
+        
 
     }
 }
