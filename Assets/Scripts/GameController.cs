@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
         destroyObjects("RocketTag");
         destroyObjects("NuclearTag");
         GameOverText.enabled = true;
-        if (score > PlayerPrefs.GetInt("Score"))
+        if (score > PlayerPrefs.GetInt("score"))
             PlayerPrefs.SetInt("score", score);
     }
 
