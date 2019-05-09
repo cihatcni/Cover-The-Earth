@@ -402,8 +402,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46120a3e40929034cae12b261a90e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soilCube: {fileID: 1941749661918955035, guid: 8715fa4f965ac0543a7bbfcec7fe0f51,
+  soilCube: {fileID: 1941749661918955035, guid: e6c950d6f505eb74cb47b1cf24fb8cc3,
     type: 3}
+  seaCube: {fileID: 1941749661918955035, guid: 8715fa4f965ac0543a7bbfcec7fe0f51, type: 3}
   kernelCube: {fileID: 3765289126593750192, guid: f957e6572489b68439db42784ac794f6,
     type: 3}
   star: {fileID: 6279642398498751040, guid: 5e5e5305b81476c4f889dd83ae5f2509, type: 3}
