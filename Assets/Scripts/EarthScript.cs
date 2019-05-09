@@ -5,6 +5,7 @@ using UnityEngine;
 public class EarthScript : MonoBehaviour {
 
     public GameObject soilCube;
+    public GameObject seaCube;
     public GameObject kernelCube;
     public GameObject star;
     public int yaricap;
@@ -23,7 +24,7 @@ public class EarthScript : MonoBehaviour {
                 for (z = -yaricap; z <= yaricap; z++) {
                     float dist = Mathf.Sqrt(x * x + y * y + z * z);
                     if (dist < yaricap && yaricap - dist <= 1) {
-                        GameObject tmp = Instantiate(soilCube, new Vector3(x, y, z), new Quaternion(0, 0, 0, 0));
+                        GameObject tmp = Instantiate(Random.value<0.3f ? soilCube : seaCube, new Vector3(x, y, z), new Quaternion(0, 0, 0, 0));
                         tmp.transform.SetParent(gameObject.transform);
                     }
                     else if (yaricap - dist > 1 && yaricap - dist <= 2) {

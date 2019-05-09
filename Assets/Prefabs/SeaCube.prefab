@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1941749661918955032}
   - component: {fileID: 5055391158158194213}
   m_Layer: 0
-  m_Name: SoilCube 1
+  m_Name: SoilCube
   m_TagString: SoilTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e864d0ea485aef4385f0b776feacdca, type: 2}
+  - {fileID: 2100000, guid: 2808d3d0946950a4e813ed61361635b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,6 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56393a3aab419e54d9d15fb066063675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldMat: {fileID: 2100000, guid: 459df2535eb68a04c98c3e949917c773, type: 2}
-  soilMat: {fileID: 2100000, guid: 8e864d0ea485aef4385f0b776feacdca, type: 2}
+  shieldMat: {fileID: 2100000, guid: 4d3b8da65e9cef842bed2afad183adbf, type: 2}
+  soilMat: {fileID: 2100000, guid: 2808d3d0946950a4e813ed61361635b2, type: 2}
   earth: {fileID: 0}
