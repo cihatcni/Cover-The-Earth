@@ -11,6 +11,7 @@ public class EarthScript : MonoBehaviour {
     public float rotSpeed = 20;
     bool drag = false;
     public int starCount = 5000;
+	
 
 
     void Start() {
@@ -44,19 +45,6 @@ public class EarthScript : MonoBehaviour {
 
     void Update() {
 
-        if (Input.GetKey(KeyCode.A)) {
-            gameObject.transform.RotateAround(Vector3.zero, Vector3.up, 4);
-        }
-        if (Input.GetKey(KeyCode.D)) {
-            gameObject.transform.RotateAround(Vector3.zero, Vector3.down, 4);
-        }
-        if (Input.GetKey(KeyCode.W)) {
-            gameObject.transform.RotateAround(Vector3.zero, Vector3.right, 4);
-        }
-        if (Input.GetKey(KeyCode.S)) {
-            gameObject.transform.RotateAround(Vector3.zero, Vector3.left, 4);
-        }
-
         if(Input.GetMouseButtonDown(0)) {
             drag = true;
         }
@@ -67,12 +55,12 @@ public class EarthScript : MonoBehaviour {
         if(drag) {
             float rotX = Input.GetAxis("Mouse X") * rotSpeed * Mathf.Deg2Rad;
             float rotY = Input.GetAxis("Mouse Y") * rotSpeed * Mathf.Deg2Rad;
-
-            transform.RotateAround(Vector3.zero, Vector3.up, -rotX);
-            transform.RotateAround(Vector3.zero, Vector3.right, rotY);        
+			
+            transform.RotateAround(Vector3.zero, Camera.main.transform.up, -rotX);
+            transform.RotateAround(Vector3.zero, Camera.main.transform.right, rotY);
+				
+			
         }
-
-
-    }
+	}
 
 }

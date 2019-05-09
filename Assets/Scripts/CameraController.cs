@@ -24,6 +24,18 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+		if (Input.GetKey(KeyCode.A)) {
+            gameObject.transform.RotateAround(Vector3.zero, -Camera.main.transform.up, 4);
+        }
+        if (Input.GetKey(KeyCode.D)) {
+            gameObject.transform.RotateAround(Vector3.zero, Camera.main.transform.up, 4);
+        }
+        if (Input.GetKey(KeyCode.W)) {
+            gameObject.transform.RotateAround(Vector3.zero, -Camera.main.transform.right, 4);
+        }
+        if (Input.GetKey(KeyCode.S)) {
+            gameObject.transform.RotateAround(Vector3.zero, Camera.main.transform.right, 4);
+        }
 
         if (Input.GetMouseButtonDown(1)) {
             drag = true;
@@ -36,10 +48,9 @@ public class CameraController : MonoBehaviour
             float rotX = Input.GetAxis("Mouse X") * rotSpeed * Mathf.Deg2Rad;
             float rotY = Input.GetAxis("Mouse Y") * rotSpeed * Mathf.Deg2Rad;
 
-            transform.RotateAround(Vector3.zero, Vector3.up, -rotX);
-            transform.RotateAround(Vector3.zero, Vector3.right, rotY);
+            transform.RotateAround(Vector3.zero, Camera.main.transform.up, rotX);
+            transform.RotateAround(Vector3.zero, Camera.main.transform.right, -rotY);
 
-            transform.LookAt(Vector3.zero);
 			newPosition = transform.position;
         }
 		
