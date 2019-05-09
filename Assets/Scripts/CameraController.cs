@@ -11,8 +11,8 @@ public class CameraController : MonoBehaviour
     public float timeRange;
     private float zoomSpeed2 = 1f;
 
-	private const int minDistanceToEarth = 18;
-	private const int maxDistanceToEarth = 125;
+	private const int minDistanceToEarth = 25;
+	private const int maxDistanceToEarth = 100;
 	
 	private float newDistance;
 	
@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
         if (scrollAxis != 0f) { 
 			Debug.Log(scrollAxis);
 			float sign = -Mathf.Sign(scrollAxis);
-			newDistance += sign*(sign+scrollAxis)*(sign+scrollAxis)*11;
+			newDistance += sign*(sign+scrollAxis)*(sign+scrollAxis)*15;
 			newDistance = Mathf.Clamp(newDistance, minDistanceToEarth, maxDistanceToEarth);
 		}    
 		
