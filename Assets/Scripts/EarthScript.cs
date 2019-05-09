@@ -13,7 +13,9 @@ public class EarthScript : MonoBehaviour {
     bool drag = false;
     public int starCount = 5000;
 	
-
+	public int greenCounter = 0;
+	public bool isGreen = false;
+	public Dictionary<Vector3, bool> isGreenDict = new Dictionary<Vector3, bool>();
 
     void Start() {
         //Dünyanın oluşturulması
@@ -24,7 +26,18 @@ public class EarthScript : MonoBehaviour {
                 for (z = -yaricap; z <= yaricap; z++) {
                     float dist = Mathf.Sqrt(x * x + y * y + z * z);
                     if (dist < yaricap && yaricap - dist <= 1) {
-                        GameObject tmp = Instantiate(Random.value<0.3f ? soilCube : seaCube, new Vector3(x, y, z), new Quaternion(0, 0, 0, 0));
+						Vector3 pos = new Vector3(x,y,z);
+						bool closestGreen = isClosestCubeGreen(pos);
+						isGreen = closestGreen ? (Random.value<0.70f) : (Random.value<0.05f);
+						if(closestGreen)
+							greenCounter++;
+						if(greenCounter == 6) {
+							greenCounter = 0;
+							isGreen = false;
+						}
+						
+						isGreenDict.Add(pos, isGreen);
+                        GameObject tmp = Instantiate(isGreen ? soilCube : seaCube, new Vector3(x, y, z), new Quaternion(0, 0, 0, 0));
                         tmp.transform.SetParent(gameObject.transform);
                     }
                     else if (yaricap - dist > 1 && yaricap - dist <= 2) {
@@ -43,6 +56,21 @@ public class EarthScript : MonoBehaviour {
         }
 
     }
+	
+	public bool isClosestCubeGreen(Vector3 pos) {
+		bool temp = false;
+		int cogunluk = 0;
+		foreach(KeyValuePair<Vector3, bool> entry in isGreenDict) {
+			float dist = Vector3.Distance(entry.Key, pos);
+			if(dist < 1.45f) {
+				if(entry.Value)
+					cogunluk++;
+				else
+					cogunluk--;
+			}
+		}
+		return cogunluk >= 0;
+	}
 
     void Update() {
 
