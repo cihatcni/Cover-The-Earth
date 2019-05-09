@@ -22,14 +22,14 @@ public class RandomObjectManager : MonoBehaviour
     }
 
 
-    void Update() {
+    void FixedUpdate() {
 
         int score = gc.getScore();
         if((score-lastScore) > 100) {
             lastScore = score;
-            randomRangeHealth += 0.001f;
-            randomRangeNuclear += 0.0005f;
-            randomRangeRocket += 0.001f;
+            randomRangeHealth += 0.0015f;
+            randomRangeNuclear += 0.0003f;
+            randomRangeRocket += 0.0015f;
         }
 
         if (Random.value < randomRangeHealth)
