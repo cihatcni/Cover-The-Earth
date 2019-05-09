@@ -11,7 +11,6 @@ public class LavaCubeScript : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        Debug.Log("OYUN BİTTİ!!!");
         controller.GameOver();
         Destroy(collision.gameObject);
     }

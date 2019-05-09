@@ -19,7 +19,6 @@ public class EarthScript : MonoBehaviour {
 
     void Start() {
         //Dünyanın oluşturulması
-        Debug.Log("Başlatıldı.");
         int x, y, z;
         for (x = -yaricap; x <= yaricap; x++)
             for (y = -yaricap; y <= yaricap; y++)
@@ -58,7 +57,6 @@ public class EarthScript : MonoBehaviour {
     }
 	
 	public bool isClosestCubeGreen(Vector3 pos) {
-		bool temp = false;
 		int cogunluk = 0;
 		foreach(KeyValuePair<Vector3, bool> entry in isGreenDict) {
 			float dist = Vector3.Distance(entry.Key, pos);
@@ -74,10 +72,9 @@ public class EarthScript : MonoBehaviour {
 
     void Update() {
 
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(0))
             drag = true;
-        }
-
+        
         if (Input.GetMouseButtonUp(0))
             drag = false;
 
@@ -86,9 +83,7 @@ public class EarthScript : MonoBehaviour {
             float rotY = Input.GetAxis("Mouse Y") * rotSpeed * Mathf.Deg2Rad;
 			
             transform.RotateAround(Vector3.zero, Camera.main.transform.up, -rotX);
-            transform.RotateAround(Vector3.zero, Camera.main.transform.right, rotY);
-				
-			
+            transform.RotateAround(Vector3.zero, Camera.main.transform.right, rotY);						
         }
 	}
 

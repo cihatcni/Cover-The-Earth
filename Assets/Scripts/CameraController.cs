@@ -56,7 +56,6 @@ public class CameraController : MonoBehaviour
 		
 		float scrollAxis = Input.GetAxis("Mouse ScrollWheel");
         if (scrollAxis != 0f) { 
-			Debug.Log(scrollAxis);
 			float sign = -Mathf.Sign(scrollAxis);
 			newDistance += sign*(sign+scrollAxis)*(sign+scrollAxis)*15;
 			newDistance = Mathf.Clamp(newDistance, minDistanceToEarth, maxDistanceToEarth);

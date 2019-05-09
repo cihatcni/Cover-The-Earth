@@ -9,7 +9,6 @@ public class CubeScript : MonoBehaviour {
     Renderer rend;
     BoxCollider collider;
     GameController controller;
-    public GameObject earth;
 
     void Start() {
         rend = GetComponent<Renderer>();
@@ -32,7 +31,6 @@ public class CubeScript : MonoBehaviour {
             }
             else if(collision.gameObject.tag == "NuclearTag") {
                 controller.GameOver();
-                Debug.Log("Nuclear Çarptı.");
             }
             this.gameObject.GetComponentInParent<AudioSource>().clip = collision.gameObject.GetComponent<AudioSource>().clip;
             this.gameObject.GetComponentInParent<AudioSource>().Play();
